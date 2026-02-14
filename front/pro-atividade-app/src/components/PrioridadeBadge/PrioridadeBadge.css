@@ -1,0 +1,35 @@
+/* PrioridadeBadge styles */
+.prioridade-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.6rem;
+  font-weight: 700;
+  font-size: 0.86rem;
+}
+.badge-alta {
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  color: white;
+}
+.badge-normal {
+  background: linear-gradient(90deg, #ffd166, #ffb86b);
+  color: #4b2b00;
+}
+.badge-baixa {
+  background: linear-gradient(90deg, #90f7ec, #32ccbc);
+  color: #003f3a;
+}
+.prioridade-icon {
+  font-size: 1rem;
+}
+.prioridade-text {
+  letter-spacing: 0.4px;
+}
+
+/* provide aliases and alternate palette from App.css to ensure compatibility */
+.badge-prioridade { padding: 0.6rem 1rem; border-radius: 2rem; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 0.6rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.3s ease; animation: slideInDown 0.5s ease; }
+.badge-alta, .badge-prioridade.alta { background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%); color: white; }
+.badge-normal, .badge-prioridade.normal { background: linear-gradient(135deg, #ffd43b 0%, #fab005 100%); color: #333; }
+.badge-baixa, .badge-prioridade.baixa { background: linear-gradient(135deg, #51cf66 0%, #37b24d 100%); color: white; }
+

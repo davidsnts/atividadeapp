@@ -1,0 +1,99 @@
+.list-card {
+  animation: slideInUp 0.5s ease;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+}
+.list-card .card {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+.list-card .card-body {
+  padding: 0;
+}
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+  animation: slideInDown 0.5s ease;
+}
+.list-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.list-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  animation: slideInRight 0.5s ease;
+}
+.list-items {
+  gap: 0.75rem;
+}
+.list-items .list-group-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 0.75rem;
+  background: white;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.list-items .list-group-item:hover {
+  border-color: #667eea;
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.15);
+}
+.empty-state {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  animation: fadeIn 0.5s ease;
+}
+.empty-icon {
+  font-size: 3.5rem;
+  margin-bottom: 0.75rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+.empty-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+.empty-subtext {
+  color: #999;
+  font-size: 0.9rem;
+}
+@media (max-width: 768px) {
+  .list-card {
+    padding: 1.25rem;
+  }
+  .list-title {
+    font-size: 1.2rem;
+  }
+  .list-count {
+    width: 40px;
+    height: 40px;
+  }
+}

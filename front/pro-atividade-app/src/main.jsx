@@ -5,7 +5,7 @@ import App from "./App.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 createRoot(document.getElementById("root")).render(
-  <div className="container">
+  <div className=" bg vh-100 ">
     <StrictMode>
       <App />
     </StrictMode>
