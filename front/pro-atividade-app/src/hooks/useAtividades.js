@@ -33,6 +33,8 @@ const useAtividades = () => {
         ? response.data 
         : atividade;
       setAtividades(prev => [...prev, novaAtividade]);
+      // garantir consistência com backend atualizando a lista
+      try { await carregarAtividades(); } catch (e) { /* não bloquear o fluxo principal */ }
       setErro(null);
       return novaAtividade;
     } catch (err) {
@@ -49,6 +51,7 @@ const useAtividades = () => {
         ? response.data 
         : atividade;
       setAtividades(prev => prev.map(a => a.id === id ? atividadeAtualizada : a));
+      try { await carregarAtividades(); } catch (e) { }
       setErro(null);
       return atividadeAtualizada;
     } catch (err) {
@@ -62,6 +65,7 @@ const useAtividades = () => {
     try {
       await atividadeService.delete(idAtvd);
       setAtividades(prev => prev.filter(x => x.id !== idAtvd));
+      try { await carregarAtividades(); } catch (e) { }
       setErro(null);
     } catch (err) {
       console.error("Erro ao apagar atividade:", err);
