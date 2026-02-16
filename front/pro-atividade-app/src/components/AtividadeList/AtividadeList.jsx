@@ -1,17 +1,16 @@
-import React from 'react'
-import { Card, ListGroup } from 'react-bootstrap'
-import AtividadeItem from '../AtividadeItem'
-import './AtividadeList.css'
+import React, { useEffect } from "react";
+import { Card, ListGroup } from "react-bootstrap";
+import AtividadeItem from "../AtividadeItem";
+import "./AtividadeList.css";
 
 const AtividadeList = ({ atividades, onEdit, onDelete }) => {
+  // atividades recebidas via props; evitar logs em produção
   return (
     <div className="list-card">
       <Card className="shadow-0 border-0">
         <Card.Body className="p-0">
           <div className="list-header">
-            <h2 className="list-title">
-              📋 Minhas Atividades
-            </h2>
+            <h2 className="list-title">📋 Minhas Atividades</h2>
             <span className="list-count">{atividades.length}</span>
           </div>
 
@@ -19,7 +18,9 @@ const AtividadeList = ({ atividades, onEdit, onDelete }) => {
             <div className="empty-state">
               <div className="empty-icon">📭</div>
               <p className="empty-text">Nenhuma atividade cadastrada</p>
-              <p className="empty-subtext">Crie uma nova atividade para começar!</p>
+              <p className="empty-subtext">
+                Crie uma nova atividade para começar!
+              </p>
             </div>
           )}
 

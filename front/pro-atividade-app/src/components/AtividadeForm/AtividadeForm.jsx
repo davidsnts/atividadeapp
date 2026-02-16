@@ -8,6 +8,7 @@ import {
 } from "react-bootstrap";
 import './AtividadeForm.css';
 
+
 const AtividadeForm = (props) => {
   const [id, setId] = useState("");
   const [msg, setMsg] = useState("");
@@ -22,6 +23,7 @@ const AtividadeForm = (props) => {
       setDescricao(props.atividadeEmEdicao.descricao);
       setPrioridade(props.atividadeEmEdicao.prioridade);
     }
+    
   }, [props.editandoAtividade, props.atividadeEmEdicao]);
 
   const resetFormulario = () => {
@@ -33,10 +35,9 @@ const AtividadeForm = (props) => {
     props.setEditandoAtividade(false);
   };
 
-  const addAtividade = (e) => {
+  const handleSubmitFormulario = async (e) => {
     e.preventDefault();
-
-    if (!Number(id)) {
+    if (id === '' || isNaN(Number(id))) {
       setMsg("ID deve ser número!");
       return;
     }
@@ -45,30 +46,25 @@ const AtividadeForm = (props) => {
       setMsg("Preencha todos os campos!");
       return;
     }
-
-    if (props.editandoAtividade) {
-      const listaAtualizada = props.atividades.map((ativ) =>
-        ativ.id === Number(id)
-          ? { id: Number(id), titulo, descricao, prioridade }
-          : ativ,
-      );
-
-      props.setAtividades(listaAtualizada);
-      props.setEditandoAtividade(false);
-    } else {
-      if (props.atividades.some((x) => x.id === Number(id))) {
-        setMsg("Esse ID já existe!");
-        return;
+    const idNum = Number(id);
+    try {
+      if (props.editandoAtividade) {
+        // atualizar via método passado por props
+        await props.atualizarAtividade(idNum, { id: idNum, titulo, descricao, prioridade });
+        props.setEditandoAtividade(false);
+      } else {
+        // criar via método passado por props
+        if (props.atividades.some((x) => x.id === idNum)) {
+          setMsg("Esse ID já existe!");
+          return;
+        }
+        await props.addAtividade({ id: idNum, titulo, descricao, prioridade });
       }
-
-      props.setAtividades([
-        ...props.atividades,
-        { id: Number(id), titulo, descricao, prioridade },
-      ]);
+      resetFormulario();
+      props.setMostrarFormulario(false);
+    } catch (erro) {
+      setMsg(erro.message || "Erro ao salvar atividade");
     }
-
-    resetFormulario();
-    props.setMostrarFormulario(false);
   };
 
   return (
@@ -82,7 +78,7 @@ const AtividadeForm = (props) => {
             {props.editandoAtividade ? "Editando Atividade" : "Cadastrar Atividade"}
           </div>
 
-          <Form onSubmit={addAtividade}>
+          <Form onSubmit={handleSubmitFormulario}>
           <Row>
             <Col md={4}>
               <Form.Group>

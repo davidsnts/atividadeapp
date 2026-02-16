@@ -7,7 +7,7 @@ import AtividadeList from "./components/AtividadeList";
 import useAtividades from "./hooks/useAtividades";
 
 function App() {
-  const { atividades, setAtividades, apagarAtividade } = useAtividades();
+  const { atividades, setAtividades, addAtividade, atualizarAtividade, apagarAtividade } = useAtividades();
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [editandoAtividade, setEditandoAtividade] = useState(false);
   const [atividadeEmEdicao, setAtividadeEmEdicao] = useState(null);
@@ -70,6 +70,8 @@ function App() {
               editandoAtividade={editandoAtividade}
               atividades={atividades}
               atividadeEmEdicao={atividadeEmEdicao}
+              addAtividade={addAtividade}
+              atualizarAtividade={atualizarAtividade}
             />
           )}
 
