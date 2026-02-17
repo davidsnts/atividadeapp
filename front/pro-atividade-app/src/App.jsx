@@ -18,8 +18,7 @@ function App() {
     setMostrarFormulario(true);
   };
 
-  const handleApagarAtividade = (idAtvd) => {
-    if (!window.confirm("Deseja realmente apagar esta atividade?")) return;
+  const handleApagarAtividade = (idAtvd) => {    
     apagarAtividade(idAtvd);
   };
 

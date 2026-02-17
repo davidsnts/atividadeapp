@@ -4,7 +4,6 @@ import AtividadeItem from "../AtividadeItem";
 import "./AtividadeList.css";
 
 const AtividadeList = ({ atividades, onEdit, onDelete }) => {
-  // atividades recebidas via props; evitar logs em produção
   return (
     <div className="list-card">
       <Card className="shadow-0 border-0">
